@@ -139,8 +139,8 @@ class FileSplitter:
             current = left
 
 	  # FIX this hack to cancel an action
-	  if (display.splitActionCanceled != None):
-            display.splitActionCanceled = None
+	  if (display.splitActionCanceled != False):
+            display.splitActionCanceled = False
             display.set_sensitive(True)
 	    return
 
@@ -250,9 +250,11 @@ class GtkFileSplitter:
     self.wTree.signal_autoconnect(dic)
 
     # select the first element in the 'chunksizeComboBox'
-    self.wTree.get_widget("chunksizeComboBox").set_active(0)
+    self.widget("chunksizeComboBox").set_active(0)
+    self.widget("cancelButton").set_sensitive(False)
 
     # splitActionCanceled
+    self.splitRunning = False
     self.splitActionCanceled = False
 
   def on_cancelButton_clicked(self, widget):
@@ -266,7 +268,9 @@ class GtkFileSplitter:
     #  print "confirmed ok"
     #else:
     #  print "not confirmed"
-    self.splitActionCanceled = True
+    if (self.splitRunning):
+      self.splitActionCanceled = True
+
     self.alert(_("Action canceled by user"))
     #self.info(_("not implemented yet"))
 
@@ -334,7 +338,9 @@ class GtkFileSplitter:
       self.set_sensitive(False)
 
       # delegate splits the file
+      self.splitRunning = True
       fileSplitter.split(self) # use self as a display of the task status
+      self.splitRunning = False
       self.info(_("Done"))
 
       # Activate Controls and reset progress
@@ -350,9 +356,19 @@ class GtkFileSplitter:
     self.widget("md5CheckButton").set_sensitive(value)
     self.widget("splitFileButton").set_sensitive(value)
 
+    # Cancelbutton == !value
+    if (value):
+      self.widget("cancelButton").set_sensitive(False)
+    else:
+      self.widget("cancelButton").set_sensitive(True)
+
   def show_progress(self, value):
-    fr = self.widget("progressBar").get_fraction()
     self.widget("progressBar").set_fraction(value)
+    if (value > 0):
+      text = "Working ... %d%c done" % ( int(100*value), '%')
+      self.widget("progressBar").set_text(text)
+    else:
+      self.widget("progressBar").set_text('')
 
     # Fix to the update of a progressbar as seen here:
     # http://www.daa.com.au/pipermail/pygtk/2004-December/009318.html
