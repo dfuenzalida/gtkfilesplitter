@@ -1,0 +1,41 @@
+# Spanish translations for PACKAGE package.
+# Copyright (C) 2006 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# <EMAIL@ADDRESS>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-11-23 17:28-0300\n"
+"PO-Revision-Date: 2006-11-23 17:29-0300\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP1252\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: fs.py:49
+msgid "Delete orig file: "
+msgstr ""
+
+#: fs.py:50
+msgid "cancel pressed"
+msgstr "presionado boton cancelar"
+
+#: fs.py:51
+msgid "info works ok"
+msgstr "info funciona bien"
+
+#: fs.py:54
+msgid "Select a file to split"
+msgstr ""
+
+#: fs.py:62
+msgid "file selected: "
+msgstr ""
+
+#: fs.py:67
+msgid "no files selected"
+msgstr ""

@@ -1,0 +1,8 @@
+xgettext -k_ -kN_ -o messages.pot fs.py
+msginit --input messages.pot -> "created es.po"
+mkdir locale
+mkdir locale/es
+mkdir locale/es/LC_MESSAGES
+msgfmt es.po -o locale\es\LC_MESSAGES\filesplitter.mo
+
+
