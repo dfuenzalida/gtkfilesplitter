@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """ GtkFileSplitter - A simple graphical interface to a split/contact module
     Author: Denis Fuenzalida, based on code by Anand Pillai
-    Licence: GPL
+    Licence: GPL - See the 'license.txt' file
 """
 
 import sys
