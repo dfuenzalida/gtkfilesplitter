@@ -131,11 +131,18 @@ class FileSplitter:
 
         chunkf = file(chunkfilename, 'wb')
 
+        # while working
         while (left > 0):
           if (left > buffersize):
             current = buffersize
           else:
             current = left
+
+	  # FIX this hack to cancel an action
+	  if (display.splitActionCanceled != None):
+            display.splitActionCanceled = None
+            display.set_sensitive(True)
+	    return
 
           left = left - current
           data = f.read(current)
@@ -245,6 +252,9 @@ class GtkFileSplitter:
     # select the first element in the 'chunksizeComboBox'
     self.wTree.get_widget("chunksizeComboBox").set_active(0)
 
+    # splitActionCanceled
+    self.splitActionCanceled = False
+
   def on_cancelButton_clicked(self, widget):
 
     # Recupero el estado del checkbox 'deleteOriginalFileCheckButton'
@@ -256,8 +266,9 @@ class GtkFileSplitter:
     #  print "confirmed ok"
     #else:
     #  print "not confirmed"
-    #self.alert(_("cancel pressed"))
-    self.info(_("not implemented yet"))
+    self.splitActionCanceled = True
+    self.alert(_("Action canceled by user"))
+    #self.info(_("not implemented yet"))
 
   def on_fileToSplitButton_clicked(self, widget):
     chooser = gtk.FileChooserDialog(title=_("Select a file to split"), \
@@ -319,9 +330,25 @@ class GtkFileSplitter:
       splitArgs = ["-i", filename, "-n", self.baseChunkSize * self.comboboxMult, "-s"]
       fileSplitter.parseOptions(splitArgs)
 
+      # Deactivate controls while working
+      self.set_sensitive(False)
+
+      # delegate splits the file
       fileSplitter.split(self) # use self as a display of the task status
       self.info(_("Done"))
+
+      # Activate Controls and reset progress
+      self.set_sensitive(True)
       self.show_progress(0)
+
+  def set_sensitive(self, value):
+    self.widget("chunksizeSpinButton").set_sensitive(value)
+    self.widget("chunksizeComboBox").set_sensitive(value)
+    self.widget("fileToSplitButton").set_sensitive(value)
+    self.widget("fileToSplitEntry").set_sensitive(value)
+    self.widget("deleteOriginalFileCheckButton").set_sensitive(value)
+    self.widget("md5CheckButton").set_sensitive(value)
+    self.widget("splitFileButton").set_sensitive(value)
 
   def show_progress(self, value):
     fr = self.widget("progressBar").get_fraction()
