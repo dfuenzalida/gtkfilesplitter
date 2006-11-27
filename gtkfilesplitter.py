@@ -115,8 +115,8 @@ class FileSplitter:
     for x in range(self.__numchunks):
       chunkfilename = bname + '.' + str(x+1) + self.__postfix
 
-      if (display != None):
-        display.show_progress((1.0*x)/self.__numchunks)
+      #if (display != None):
+      #  display.show_progress((1.0*x)/self.__numchunks)
 
       # if reading the last section, calculate correct
       # chunk size.
@@ -126,12 +126,31 @@ class FileSplitter:
       try:
         print 'Writing file', chunkfilename
 
-        # FIX THIS - Use a small buffer to complete chunksz of data!
-        data = f.read(chunksz)
-        total_bytes += len(data)
+	buffersize = 4096 # 4-kilobyte buffer - nice to the md5 buffer too?
+	left = chunksz
+
         chunkf = file(chunkfilename, 'wb')
-        chunkf.write(data)
+
+        while (left > 0):
+          if (left > buffersize):
+            current = buffersize
+          else:
+            current = left
+
+          left = left - current
+          data = f.read(current)
+          total_bytes += len(data)
+          chunkf.write(data)
+
+          if (display != None):
+            display.show_progress((1.0*total_bytes)/fsize)
+
+        #data = f.read(chunksz)
+        #total_bytes += len(data)
+        #chunkf = file(chunkfilename, 'wb')
+        #chunkf.write(data)
         chunkf.close()
+
       except (OSError, IOError), e:
         print e
         continue
