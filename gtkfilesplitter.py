@@ -54,7 +54,7 @@ class FileSplitter:
     # Optional postfix string for the chunk filename
     self.__postfix = ''
     # Program name
-    self.__progname = "FileSplitter.py"
+    self.__progname = "gtkfilesplitter.py"
     # Action
     self.__action = 0 # split
 
@@ -92,7 +92,7 @@ class FileSplitter:
         self.__action = 1 # combine
 
     if not self.__filename:
-      sys.exit("Error: filename not given")
+      sys.exit(_("Error: filename not given"))
     
   def do_work(self):
     if self.__action==0:
@@ -320,6 +320,7 @@ class GtkFileSplitter:
     #self.info(_("not implemented yet"))
 
   def on_fileToSplitButton_clicked(self, widget):
+    # TODO Set home folder as start folder for this dialog
     chooser = gtk.FileChooserDialog(title=_("Select a file to split"), \
         action=gtk.FILE_CHOOSER_ACTION_OPEN,  \
         buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,\
@@ -353,7 +354,7 @@ class GtkFileSplitter:
       self.fileToSplitEntry = self.widget("fileToSplitEntry")
       filename = self.fileToSplitEntry.get_text()
       if (len(filename) < 3):
-        self.error("Please select a file")
+        self.error(_("Please select a file"))
         return
       try:
         fileToSplit = file(filename, "rwb")
@@ -413,7 +414,7 @@ class GtkFileSplitter:
   def show_progress(self, value):
     self.widget("progressBar").set_fraction(value)
     if (value > 0):
-      text = "Working ... %d%c done" % ( int(100*value), '%')
+      text = _("Working ... %d%c done") % ( int(100*value), '%')
       self.widget("progressBar").set_text(text)
     else:
       self.widget("progressBar").set_text('')
@@ -429,28 +430,28 @@ class GtkFileSplitter:
   def info(self, message):
     md = gtk.MessageDialog(None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, \
         gtk.MESSAGE_INFO, gtk.BUTTONS_OK, message)
-    md.set_title("Information")
+    md.set_title(_("Information"))
     md.run()
     md.destroy()
 
   def alert(self, message):
     md = gtk.MessageDialog(None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, \
         gtk.MESSAGE_WARNING, gtk.BUTTONS_OK, message)
-    md.set_title("Alert")
+    md.set_title(_("Alert"))
     md.run()
     md.destroy()
 
   def error(self, message):
     md = gtk.MessageDialog(None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, \
         gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, message)
-    md.set_title("Error")
+    md.set_title(_("Error"))
     md.run()
     md.destroy()
 
   def confirm(self, message):
     md = gtk.MessageDialog(None, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, \
         gtk.MESSAGE_WARNING, gtk.BUTTONS_OK_CANCEL, message)
-    md.set_title("Please confirm")
+    md.set_title(_("Please confirm"))
     val = md.run()
     print "val", val
     md.destroy()
