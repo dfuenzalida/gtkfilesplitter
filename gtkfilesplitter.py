@@ -306,7 +306,7 @@ class GtkFileSplitter:
 
     # Recupero el estado del checkbox 'deleteOriginalFileCheckButton'
     # -- Cambiar nombre!
-    self.deleteOriginalFileCheckButton = self.wTree.get_widget("deleteOriginalFileCheckButton")
+    self.deleteOriginalFileCheckButton = self.widget("deleteOriginalFileCheckButton")
     print _("Delete orig file: "), self.deleteOriginalFileCheckButton.get_active()
     #confirmed = self.confirm(_("you wanna fries with that?"))
     #if (confirmed):
@@ -329,7 +329,7 @@ class GtkFileSplitter:
     if response == gtk.RESPONSE_OK:
       self.fileToSplit = chooser.get_filename()
       print _("file selected: "), chooser.get_filename()
-      self.fileToSplitEntry = self.wTree.get_widget("fileToSplitEntry")
+      self.fileToSplitEntry = self.widget("fileToSplitEntry")
       self.fileToSplitEntry.set_text(self.fileToSplit)
 
     elif response == gtk.RESPONSE_CANCEL:
