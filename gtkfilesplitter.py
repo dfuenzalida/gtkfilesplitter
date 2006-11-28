@@ -128,6 +128,12 @@ class FileSplitter:
     total_bytes = 0
     self.__hash = md5.new()
 
+    # Insane number of chunks? ask the user
+    if (self.__numchunks > 100):
+      if (display.confirm(_("You're about to create %d files. Are you sure?" \
+        % self.__numchunks )) == False):
+        return
+
     for x in range(self.__numchunks):
       chunkfilename = bname + '.' + str(x+1) + self.__postfix
 
