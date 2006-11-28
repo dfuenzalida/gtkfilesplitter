@@ -6,6 +6,7 @@
 
 import os
 import sys
+import md5
 
 # Version con soporte para i10n :-)
 # http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq22.002.htp
@@ -125,6 +126,7 @@ class FileSplitter:
 
     chunksz = self.__chunksize
     total_bytes = 0
+    self.__hash = md5.new()
 
     for x in range(self.__numchunks):
       chunkfilename = bname + '.' + str(x+1) + self.__postfix
@@ -166,6 +168,10 @@ class FileSplitter:
           if (display != None):
             display.show_progress((1.0*total_bytes)/fsize)
 
+          # update md5 hash if requested
+	  if (self.__md5 == 1):
+            self.__hash.update(data)
+
         #data = f.read(chunksz)
         #total_bytes += len(data)
         #chunkf = file(chunkfilename, 'wb')
@@ -189,6 +195,17 @@ class FileSplitter:
         os.remove(self.__filename)
       except:
         display.alert(_("Could't remove original file"))
+
+    # Try to create a md5 hashfile if requested
+    if (self.__md5 == 1):
+      try:
+        import os
+        hashfile = file("%s.md5" % self.__filename, "w")
+        bname = (os.path.split(self.__filename))[1]
+        hashfile.write("%s  %s" % (self.__hash.hexdigest(), bname))
+	hashfile.close()
+      except:
+        display.alert(_("Could't create md5 hashfile"))
 
     print 'Done.'
 
