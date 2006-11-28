@@ -4,12 +4,13 @@
     Licence: GPL - See the 'license.txt' file
 """
 
+import os
 import sys
 
 # Version con soporte para i10n :-)
 # http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq22.002.htp
 
-import locale, gettext, os, sys
+import locale, gettext
 
 APP = 'filesplitter'
 DIR = 'locale'
@@ -56,11 +57,16 @@ class FileSplitter:
     # Action
     self.__action = 0 # split
 
+    # md5 checksum
+    self.__md5 = 0
+    # delete original
+    self.__delete_original = 0
+
   def parseOptions(self, args):
 
     import getopt
     try:
-      optlist, arglist = getopt.getopt(args, 'sji:n:', ["split=", "join="])
+      optlist, arglist = getopt.getopt(args, 'sji:n:m:d:', ["split=", "join="])
     except getopt.GetoptError, e:
       print e
       return None
@@ -72,13 +78,20 @@ class FileSplitter:
       elif option.lower() in ('-n', ):
         # self.__numchunks = int(value)
         self.__chunksize = int(value)
+
+      # New options - MD5 checksum and remove original file
+      elif option.lower() in ('-m'):
+        self.__md5 = int(value)    # md5 checksum
+      elif option.lower() in ('-d'):
+        self.__delete_original = int(value) # delete original
+
       elif option.lower() in ('-s', '--split'):
         self.__action = 0 # split
       elif option.lower() in ('-j', '--join'):
         self.__action = 1 # combine
 
-      if not self.__filename:
-        sys.exit("Error: filename not given")
+    if not self.__filename:
+      sys.exit("Error: filename not given")
     
   def do_work(self):
     if self.__action==0:
@@ -104,6 +117,7 @@ class FileSplitter:
     # bname = (os.path.split(self.__filename))[1]
     bname = self.__filename # Use the same path to put the file pieces
     # Get the file size
+    import os
     fsize = os.path.getsize(self.__filename)
     # Get size of each chunk
     #self.__chunksize = int(float(fsize)/float(self.__numchunks))
@@ -167,6 +181,14 @@ class FileSplitter:
 
     if (display != None):
       display.show_progress(1)
+
+    # Try to remove the original file if requested
+    if (self.__delete_original == 1):
+      try:
+        import os
+        os.remove(self.__filename)
+      except:
+        display.alert(_("Could't remove original file"))
 
     print 'Done.'
 
@@ -320,18 +342,21 @@ class GtkFileSplitter:
 
       # deleteOriginalFileCheckButton check
       self.deleteOriginalFileCheckButton = self.widget("deleteOriginalFileCheckButton")
-      print _("Delete orig file: "), self.deleteOriginalFileCheckButton.get_active()
+      delete_original = self.deleteOriginalFileCheckButton.get_active()
+      print _("Delete orig file: "), delete_original
 
       # md5CheckButton check
       self.md5CheckButton = self.widget("md5CheckButton")
-      print _("Generate MD5: "), self.md5CheckButton.get_active()
+      md5 = self.md5CheckButton.get_active()
+      print _("Generate MD5: "), md5
       
       # All ok, will split the file
       print "all ok"
 
       # create a FileSplitter and send args to the splitter class
       fileSplitter = FileSplitter()
-      splitArgs = ["-i", filename, "-n", self.baseChunkSize * self.comboboxMult, "-s"]
+      splitArgs = ["-i", filename, "-n", self.baseChunkSize * self.comboboxMult, \
+		   "-m", md5, "-d", delete_original, "-s" ]
       fileSplitter.parseOptions(splitArgs)
 
       # Deactivate controls while working
