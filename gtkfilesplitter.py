@@ -313,11 +313,10 @@ class GtkFileSplitter:
     #  print "confirmed ok"
     #else:
     #  print "not confirmed"
-    if (self.splitRunning):
+    if (self.splitRunning and self.confirm(_("Do you want to cancel?"))):
       self.splitActionCanceled = True
-
-    self.alert(_("Action canceled by user"))
-    #self.info(_("not implemented yet"))
+      self.alert(_("Action canceled by user"))
+      #self.info(_("not implemented yet"))
 
   def on_fileToSplitButton_clicked(self, widget):
     # TODO Set home folder as start folder for this dialog
