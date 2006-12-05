@@ -291,6 +291,9 @@ class GtkFileSplitter:
     dic = { "on_fileToSplitButton_clicked" : self.on_fileToSplitButton_clicked,
       "on_cancelButton_clicked"      : self.on_cancelButton_clicked,
       "on_splitFileButton_clicked"   : self.on_splitFileButton_clicked,
+      "on_split_file_into_parts_activate"   : self.show_split_file_screen,
+      "on_join_file_parts_activate"  : self.show_join_parts_screen,
+      "on_about_activate"            : self.show_about_screen,
       "on_FileSplitGui_destroy"      : gtk.main_quit }
     self.wTree.signal_autoconnect(dic)
 
@@ -301,6 +304,8 @@ class GtkFileSplitter:
     # splitActionCanceled
     self.splitRunning = False
     self.splitActionCanceled = False
+
+    self.widget("vbox3").hide()
 
   def on_cancelButton_clicked(self, widget):
 
@@ -394,6 +399,18 @@ class GtkFileSplitter:
       # Activate Controls and reset progress
       self.set_sensitive(True)
       self.show_progress(0)
+
+  def show_about_screen(self, value):
+    self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter"))
+
+  def show_split_file_screen(self, value):
+    self.widget("vbox2").show()
+    self.widget("vbox3").hide()
+
+  def show_join_parts_screen(self, value):
+    if (self.splitRunning == False):
+      self.widget("vbox2").hide()
+      self.widget("vbox3").show()
 
   def set_sensitive(self, value):
     self.widget("chunksizeSpinButton").set_sensitive(value)
