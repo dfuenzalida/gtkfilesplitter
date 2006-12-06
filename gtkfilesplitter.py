@@ -288,18 +288,22 @@ class GtkFileSplitter:
     self.wTree = gtk.glade.XML(self.gladefile) 
     
     #Create our dictionay and connect it
-    dic = { "on_fileToSplitButton_clicked" : self.on_fileToSplitButton_clicked,
+    dic = {
+      "on_fileToSplitButton_clicked" : self.on_fileToSplitButton_clicked,
       "on_cancelButton_clicked"      : self.on_cancelButton_clicked,
       "on_splitFileButton_clicked"   : self.on_splitFileButton_clicked,
       "on_split_file_into_parts_activate"   : self.show_split_file_screen,
       "on_join_file_parts_activate"  : self.show_join_parts_screen,
+      "on_fileToJoinButton_clicked"  : self.on_fileToJoinButton_clicked,
       "on_about_activate"            : self.show_about_screen,
       "on_FileSplitGui_destroy"      : gtk.main_quit }
     self.wTree.signal_autoconnect(dic)
 
     # select the first element in the 'chunksizeComboBox'
     self.widget("chunksizeComboBox").set_active(0)
+    # deactivate the 'cancel' buttons
     self.widget("cancelButton").set_sensitive(False)
+    self.widget("cancelJoinButton").set_sensitive(False)
 
     # splitActionCanceled
     self.splitRunning = False
@@ -399,6 +403,25 @@ class GtkFileSplitter:
       # Activate Controls and reset progress
       self.set_sensitive(True)
       self.show_progress(0)
+
+  def on_fileToJoinButton_clicked(self, widget):
+    # TODO Set home folder as start folder for this dialog
+    chooser = gtk.FileChooserDialog(title=_("Select the first file to join"), \
+        action=gtk.FILE_CHOOSER_ACTION_OPEN,  \
+        buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,\
+          gtk.STOCK_OPEN, gtk.RESPONSE_OK))
+    response = chooser.run()
+
+    if response == gtk.RESPONSE_OK:
+      self.fileToJoin = chooser.get_filename()
+      self.fileToJoinEntry = self.widget("fileToJoinEntry")
+      self.fileToJoinEntry.set_text(self.fileToJoin)
+
+    elif response == gtk.RESPONSE_CANCEL:
+      print _("no files selected")
+
+    chooser.destroy()
+
 
   def show_about_screen(self, value):
     self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter"))

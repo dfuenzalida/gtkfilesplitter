@@ -27,7 +27,7 @@
     <widget class="GtkVBox" id="vbox1">
       <property name="visible">True</property>
       <property name="homogeneous">False</property>
-      <property name="spacing">0</property>
+      <property name="spacing">4</property>
 
       <child>
 	<widget class="GtkMenuBar" id="menubar1">
@@ -497,7 +497,7 @@ Megabytes (MB)</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkEntry" id="entry2">
+		    <widget class="GtkEntry" id="fileToJoinEntry">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="editable">True</property>
@@ -516,13 +516,14 @@ Megabytes (MB)</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button4">
+		    <widget class="GtkButton" id="fileToJoinButton">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label">gtk-open</property>
 		      <property name="use_stock">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
+		      <signal name="clicked" handler="on_fileToJoinButton_clicked" last_modification_time="Wed, 06 Dec 2006 14:35:08 GMT"/>
 		    </widget>
 		    <packing>
 		      <property name="padding">0</property>
@@ -539,7 +540,7 @@ Megabytes (MB)</property>
 	      </child>
 
 	      <child>
-		<widget class="GtkCheckButton" id="checkbutton3">
+		<widget class="GtkCheckButton" id="verifyMD5Button">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
 		  <property name="label" translatable="yes">Verify MD5 checksum file</property>
@@ -558,10 +559,10 @@ Megabytes (MB)</property>
 	      </child>
 
 	      <child>
-		<widget class="GtkCheckButton" id="checkbutton4">
+		<widget class="GtkCheckButton" id="deletePartsButton">
 		  <property name="visible">True</property>
 		  <property name="can_focus">True</property>
-		  <property name="label" translatable="yes">Delete file pieces on sucess</property>
+		  <property name="label" translatable="yes">Delete file parts on sucess</property>
 		  <property name="use_underline">True</property>
 		  <property name="relief">GTK_RELIEF_NORMAL</property>
 		  <property name="focus_on_click">True</property>
@@ -577,7 +578,7 @@ Megabytes (MB)</property>
 	      </child>
 
 	      <child>
-		<widget class="GtkProgressBar" id="progressbar2">
+		<widget class="GtkProgressBar" id="joinProgressBar">
 		  <property name="visible">True</property>
 		  <property name="orientation">GTK_PROGRESS_LEFT_TO_RIGHT</property>
 		  <property name="fraction">0</property>
@@ -598,7 +599,7 @@ Megabytes (MB)</property>
 		  <property name="spacing">0</property>
 
 		  <child>
-		    <widget class="GtkButton" id="button5">
+		    <widget class="GtkButton" id="cancelJoinButton">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label">gtk-cancel</property>
@@ -614,7 +615,7 @@ Megabytes (MB)</property>
 		  </child>
 
 		  <child>
-		    <widget class="GtkButton" id="button6">
+		    <widget class="GtkButton" id="joinButton">
 		      <property name="visible">True</property>
 		      <property name="can_focus">True</property>
 		      <property name="label">gtk-ok</property>
