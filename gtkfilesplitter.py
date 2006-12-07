@@ -426,7 +426,7 @@ class GtkFileSplitter:
 
 
   def show_about_screen(self, value):
-    self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter"))
+    self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter\n$Id$"))
 
   def show_split_file_screen(self, value):
     self.widget("vbox2").show()
