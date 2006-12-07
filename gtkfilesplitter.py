@@ -47,6 +47,7 @@ class FileSplitter:
 
   def __init__(self):
 
+    # TODO remove some obsolete code from here
     # cache filename
     self.__filename = ''
     # number of equal sized chunks
@@ -217,15 +218,19 @@ class FileSplitter:
 
     print 'Done.'
 
+  # Used to sort files while joining file parts
   def sort_index(self, f1, f2):
 
-    index1 = f1.rfind('-')
-    index2 = f2.rfind('-')
+    print "sorting: %s %s" % (f1, f2)
+
+    index1 = f1.rfind('.') + 1
+    index2 = f2.rfind('.') + 1
     
     if index1 != -1 and index2 != -1:
       i1 = int(f1[index1:len(f1)])
       i2 = int(f2[index2:len(f2)])
-      return i2 - i1
+      # return i2 - i1
+      return i1 - i2
     
   def combine(self):
     """ Combine existing chunks to recreate the file.
@@ -234,9 +239,15 @@ class FileSplitter:
 
     import re
     
+    # remove the last dot and number (/foo/bar.baz.1 -> /foo/bar.baz)
+    self.__filename = self.__filename.rsplit(".", 1)[0]
     print 'Creating file', self.__filename
     
     bname = (os.path.split(self.__filename))[1]
+    destdir = (os.path.split(self.__filename))[0]
+    print "destdir", destdir
+
+    #bname = self.__filename
     bname2 = bname
     
     # bugfix: if file contains characters like +,.,[]
@@ -245,13 +256,16 @@ class FileSplitter:
             ['\+','\.','\[','\]','\$', '\(', '\)']):
       bname2 = bname2.replace(a, b)
       
+    print "bname2 =", bname2
+
     # Replaced the '-' with '.' as separator
-    chunkre = re.compile(bname2 + '.' + '[0-9]+')
+    chunkre = re.compile(bname2 + '\.' + '[0-9]+')
     
     chunkfiles = []
-    for f in os.listdir("."):
-      print f
+    #for f in os.listdir((os.path.split(bname2))[0]):
+    for f in os.listdir(destdir):
       if chunkre.match(f):
+        print "Using file", f
         chunkfiles.append(f)
 
 
@@ -259,24 +273,40 @@ class FileSplitter:
     chunkfiles.sort(self.sort_index)
 
     data=''
+    original = open(bname, "wb")
     for f in chunkfiles:
 
-      try:
-        print 'Appending chunk', os.path.join(".", f)
-        data += open(f, 'rb').read()
-      except (OSError, IOError, EOFError), e:
-        print e
-        continue
+      # open part, read chunks up to 4k, write to original file
+      print "joining part", f
+      part = open(f, "rb")
+      reading = True
+      # while len(data = part.read(4096)) > 0:
+      while reading:
+        data = part.read(4096)
+        #print "writing %d bytes" % len(data)
+	if (len(data) > 0):
+          original.write(data)
+        else:
+          reading = False
 
-    try:
-      f = open(bname, 'wb')
-      f.write(data)
-      f.close()
-    except (OSError, IOError, EOFError), e:
-      raise FileSplitterException, str(e)
+      part.close()
+
+    original.close()
+
+    #  try:
+    #    print 'Appending chunk', os.path.join(".", f)
+    #    data += open(f, 'rb').read()
+    #  except (OSError, IOError, EOFError), e:
+    #    print e
+    #    continue
+    #try:
+    #  f = open(bname, 'wb')
+    #  f.write(data)
+    #  f.close()
+    #except (OSError, IOError, EOFError), e:
+    #  raise FileSplitterException, str(e)
 
     print 'Wrote file', bname
-
 
 #############################################################################
 
@@ -297,6 +327,7 @@ class GtkFileSplitter:
       "on_split_file_into_parts_activate"   : self.show_split_file_screen,
       "on_join_file_parts_activate"  : self.show_join_parts_screen,
       "on_fileToJoinButton_clicked"  : self.on_fileToJoinButton_clicked,
+      "on_joinButton_clicked"        : self.on_joinButton_clicked,
       "on_about_activate"            : self.show_about_screen,
       "on_FileSplitGui_destroy"      : gtk.main_quit }
     self.wTree.signal_autoconnect(dic)
@@ -424,6 +455,17 @@ class GtkFileSplitter:
 
     chooser.destroy()
 
+  def on_joinButton_clicked(self, widget):
+    # TODO check join options
+    self.fileToJoinEntry = self.widget("fileToJoinEntry")
+    filename = self.fileToJoinEntry.get_text()
+    md5 = False
+    delete_original = False
+
+    fileSplitter = FileSplitter()
+    splitArgs = ["-i", filename, "-m", md5, "-d", delete_original, "-j" ]
+    fileSplitter.parseOptions(splitArgs)
+    fileSplitter.combine()
 
   def show_about_screen(self, value):
     self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter\n$Id$"))
