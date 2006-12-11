@@ -175,7 +175,7 @@ class FileSplitter:
           chunkf.write(data)
 
           if (display != None):
-            display.show_progress((1.0*total_bytes)/fsize)
+            display.show_progress("progressBar", (1.0*total_bytes)/fsize)
 
           # update md5 hash if requested
 	  if (self.__md5 == 1):
@@ -195,7 +195,7 @@ class FileSplitter:
         break
 
     if (display != None):
-      display.show_progress(1)
+      display.show_progress("progressBar", 1)
 
     # Try to remove the original file if requested
     if (self.__delete_original == 1):
@@ -232,12 +232,13 @@ class FileSplitter:
       # return i2 - i1
       return i1 - i2
     
-  def combine(self):
+  def combine(self, display):
     """ Combine existing chunks to recreate the file.
     The chunks must be present in the cwd. The new file
     will be written to cwd. """
 
     import re
+    import os
     
     # remove the last dot and number (/foo/bar.baz.1 -> /foo/bar.baz)
     self.__filename = self.__filename.rsplit(".", 1)[0]
@@ -274,9 +275,13 @@ class FileSplitter:
 
     data=''
     original = open(bname, "wb")
+    i = 0
+    self.__hash = md5.new()
+
     for f in chunkfiles:
 
       # open part, read chunks up to 4k, write to original file
+      i = i + 1
       print "joining part", f
       part = open(f, "rb")
       reading = True
@@ -286,27 +291,46 @@ class FileSplitter:
         #print "writing %d bytes" % len(data)
 	if (len(data) > 0):
           original.write(data)
+
+          # update md5 hash if requested
+	  if (self.__md5 == 1):
+            self.__hash.update(data)
         else:
           reading = False
 
       part.close()
+      # update join progressBar status
+      display.show_progress("joinProgressBar", float(i)/len(chunkfiles))
 
     original.close()
 
-    #  try:
-    #    print 'Appending chunk', os.path.join(".", f)
-    #    data += open(f, 'rb').read()
-    #  except (OSError, IOError, EOFError), e:
-    #    print e
-    #    continue
-    #try:
-    #  f = open(bname, 'wb')
-    #  f.write(data)
-    #  f.close()
-    #except (OSError, IOError, EOFError), e:
-    #  raise FileSplitterException, str(e)
-
+    display.show_progress("joinProgressBar", 0)
     print 'Wrote file', bname
+
+    # Verify MD5 checksum against .md5 file
+    if (self.__md5 == 1):
+
+      print "opening checksum file", self.__filename + ".md5"
+      md5file = open(self.__filename + ".md5", "rb")
+      md5text = md5file.readline().rstrip("\n\r")
+      md5file.close()
+      md5check = "%s  %s" % (self.__hash.hexdigest(), bname)
+
+      if (md5check == md5text):
+        display.info(_("Checksum verified OK"))
+        
+	# try to delete part files if requested and verified ok
+        if (self.__delete_original == 1):
+          import os
+	  for f in chunkfiles:
+            try:
+              os.remove(f)
+            except:
+              display.alert(_("Could't remove file part\n'%s'") % f)
+
+      else:
+        display.alert(_("Checksum couldn't be verified"))
+        print "e '%s'\nf '%s'" % (md5text, md5check)
 
 #############################################################################
 
@@ -435,7 +459,7 @@ class GtkFileSplitter:
 
       # Activate Controls and reset progress
       self.set_sensitive(True)
-      self.show_progress(0)
+      self.show_progress("progressBar", 0)
 
   def on_fileToJoinButton_clicked(self, widget):
     # TODO Set home folder as start folder for this dialog
@@ -459,13 +483,17 @@ class GtkFileSplitter:
     # TODO check join options
     self.fileToJoinEntry = self.widget("fileToJoinEntry")
     filename = self.fileToJoinEntry.get_text()
-    md5 = False
-    delete_original = False
+
+    # Check verifyMD5Button
+    md5 = self.widget("verifyMD5Button").get_active()
+
+    # Check deletePartsButton
+    delete_original = self.widget("deletePartsButton").get_active()
 
     fileSplitter = FileSplitter()
     splitArgs = ["-i", filename, "-m", md5, "-d", delete_original, "-j" ]
     fileSplitter.parseOptions(splitArgs)
-    fileSplitter.combine()
+    fileSplitter.combine(self)
 
   def show_about_screen(self, value):
     self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter\n$Id$"))
@@ -494,13 +522,13 @@ class GtkFileSplitter:
     else:
       self.widget("cancelButton").set_sensitive(True)
 
-  def show_progress(self, value):
-    self.widget("progressBar").set_fraction(value)
+  def show_progress(self, progressBarName, value):
+    self.widget(progressBarName).set_fraction(value)
     if (value > 0):
       text = _("Working ... %d%c done") % ( int(100*value), '%')
-      self.widget("progressBar").set_text(text)
+      self.widget(progressBarName).set_text(text)
     else:
-      self.widget("progressBar").set_text('')
+      self.widget(progressBarName).set_text('')
 
     # Fix to the update of a progressbar as seen here:
     # http://www.daa.com.au/pipermail/pygtk/2004-December/009318.html
