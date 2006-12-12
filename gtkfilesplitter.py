@@ -352,7 +352,7 @@ class GtkFileSplitter:
     
     #Set the Glade file
     self.gladefile = "gtkfilesplitter.glade"  
-    self.wTree = gtk.glade.XML(self.gladefile) 
+    self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter") 
     
     #Create our dictionay and connect it
     dic = {
