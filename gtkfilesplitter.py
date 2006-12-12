@@ -287,6 +287,13 @@ class FileSplitter:
       reading = True
       # while len(data = part.read(4096)) > 0:
       while reading:
+
+        # check if join files is cancelled
+        if (display.joinActionCanceled != False):
+          display.joinActionCanceled = False
+          display.set_sensitive(True)
+	  return
+
         data = part.read(4096)
         #print "writing %d bytes" % len(data)
 	if (len(data) > 0):
@@ -331,6 +338,10 @@ class FileSplitter:
       else:
         display.alert(_("Checksum couldn't be verified"))
         print "e '%s'\nf '%s'" % (md5text, md5check)
+        return
+
+    # we're done? tell the user
+    display.info(_("Done"))
 
 #############################################################################
 
@@ -351,6 +362,7 @@ class GtkFileSplitter:
       "on_split_file_into_parts_activate"   : self.show_split_file_screen,
       "on_join_file_parts_activate"  : self.show_join_parts_screen,
       "on_fileToJoinButton_clicked"  : self.on_fileToJoinButton_clicked,
+      "on_cancelJoinButton_clicked"  : self.on_cancelJoinButton_clicked,
       "on_joinButton_clicked"        : self.on_joinButton_clicked,
       "on_about_activate"            : self.show_about_screen,
       "on_FileSplitGui_destroy"      : gtk.main_quit }
@@ -365,24 +377,14 @@ class GtkFileSplitter:
     # splitActionCanceled
     self.splitRunning = False
     self.splitActionCanceled = False
+    self.joinActionCanceled = False
 
     self.widget("vbox3").hide()
 
   def on_cancelButton_clicked(self, widget):
-
-    # Recupero el estado del checkbox 'deleteOriginalFileCheckButton'
-    # -- Cambiar nombre!
-    self.deleteOriginalFileCheckButton = self.widget("deleteOriginalFileCheckButton")
-    print _("Delete orig file: "), self.deleteOriginalFileCheckButton.get_active()
-    #confirmed = self.confirm(_("you wanna fries with that?"))
-    #if (confirmed):
-    #  print "confirmed ok"
-    #else:
-    #  print "not confirmed"
     if (self.splitRunning and self.confirm(_("Do you want to cancel?"))):
       self.splitActionCanceled = True
       self.alert(_("Action canceled by user"))
-      #self.info(_("not implemented yet"))
 
   def on_fileToSplitButton_clicked(self, widget):
     # TODO Set home folder as start folder for this dialog
@@ -484,6 +486,16 @@ class GtkFileSplitter:
     self.fileToJoinEntry = self.widget("fileToJoinEntry")
     filename = self.fileToJoinEntry.get_text()
 
+    if (len(filename) < 3):
+      self.error(_("Please select a file"))
+      return
+    try:
+      fileToSplit = file(filename, "rb")
+      fileToSplit.close()
+    except:
+      self.error (_("Couldn't open the file '%s'") % filename )
+      return
+
     # Check verifyMD5Button
     md5 = self.widget("verifyMD5Button").get_active()
 
@@ -495,8 +507,13 @@ class GtkFileSplitter:
     fileSplitter.parseOptions(splitArgs)
     fileSplitter.combine(self)
 
+  def on_cancelJoinButton_clicked(self, widget):
+    if (self.joinRunning and self.confirm(_("Do you want to cancel?"))):
+      self.joinActionCanceled = True
+      self.alert(_("Action canceled by user"))
+
   def show_about_screen(self, value):
-    self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter\n$Id$"))
+    self.info(_("Simple File Splitter/Joiner version 0.1\nby Denis Fuenzalida <denis.fuenzalida@gmail.com>\n\nhttp://code.google.com/p/gtkfilesplitter"))
 
   def show_split_file_screen(self, value):
     self.widget("vbox2").show()
@@ -508,6 +525,7 @@ class GtkFileSplitter:
       self.widget("vbox3").show()
 
   def set_sensitive(self, value):
+    # split file widgets
     self.widget("chunksizeSpinButton").set_sensitive(value)
     self.widget("chunksizeComboBox").set_sensitive(value)
     self.widget("fileToSplitButton").set_sensitive(value)
@@ -516,11 +534,16 @@ class GtkFileSplitter:
     self.widget("md5CheckButton").set_sensitive(value)
     self.widget("splitFileButton").set_sensitive(value)
 
+    # join file widgets
+    self.widget("fileToJoinEntry").set_sensitive(value)
+    self.widget("fileToJoinButton").set_sensitive(value)
+    self.widget("verifyMD5Button").set_sensitive(value)
+    self.widget("deletePartsButton").set_sensitive(value)
+    self.widget("joinButton").set_sensitive(value)
+
     # Cancelbutton == !value
-    if (value):
-      self.widget("cancelButton").set_sensitive(False)
-    else:
-      self.widget("cancelButton").set_sensitive(True)
+    self.widget("cancelButton").set_sensitive(not value)
+    self.widget("cancelJoinButton").set_sensitive(not value)
 
   def show_progress(self, progressBarName, value):
     self.widget(progressBarName).set_fraction(value)
