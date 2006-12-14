@@ -38,7 +38,7 @@ msgid "Checksum verified OK"
 msgstr "Verificación de archivo correcta"
 
 #: gtkfilesplitter.py:336
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Could't remove file part\n"
 "'%s'"
@@ -97,7 +97,7 @@ msgid "Select the first file to join"
 msgstr "Seleccione el primer archivo a unir"
 
 #: gtkfilesplitter.py:496
-#, fuzzy, python-format
+#, python-format
 msgid "Couldn't open the file '%s'"
 msgstr "No se pudo abrir el archivo '"
 
@@ -136,12 +136,11 @@ msgstr ""
 
 #: gtkfilesplitter.glade.h:6
 msgid "Delete file parts on sucess"
-msgstr "Borrar trozos si sale todo bien"
+msgstr "Borrar trozos en caso de éxito"
 
 #: gtkfilesplitter.glade.h:7
-#, fuzzy
 msgid "Delete original file?"
-msgstr "No se pudo borrar el archivo original"
+msgstr "Borrar el archivo original?"
 
 #: gtkfilesplitter.glade.h:8
 msgid "File Splitter/Joiner 0.1"
@@ -156,9 +155,8 @@ msgid "File to split: "
 msgstr "Archivo a dividir: "
 
 #: gtkfilesplitter.glade.h:11
-#, fuzzy
 msgid "Generate MD5 checksum file?"
-msgstr "Generar MD5: "
+msgstr "Generar archivo MD5 de verificación? "
 
 #: gtkfilesplitter.glade.h:12
 msgid "Parts size:"
@@ -189,6 +187,5 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #: gtkfilesplitter.glade.h:19
-#, fuzzy
 msgid "_Split file into parts"
 msgstr "Seleccione el archivo a dividir"

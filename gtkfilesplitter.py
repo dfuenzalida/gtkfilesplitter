@@ -1,10 +1,22 @@
 #!/usr/bin/env python
 # $Id$
-
-""" GtkFileSplitter - A simple graphical interface to a split/contact module
-    Author: Denis Fuenzalida, based on code by Anand Pillai
-    Licence: GPL - See the 'license.txt' file
-"""
+#
+# GtkFileSplitter - A simple graphical interface to a split/contact module
+# Author: Denis Fuenzalida, based on code by Anand Pillai
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Library General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 import os
 import sys
@@ -18,9 +30,6 @@ import locale, gettext
 APP = 'filesplitter'
 DIR = 'locale'
 
-#locale.setlocale(locale.LC_ALL, '')
-gettext.bindtextdomain(APP, DIR)
-gettext.textdomain(APP)
 _ = gettext.gettext
 
 try:
@@ -33,6 +42,11 @@ try:
   import gtk.glade
 except:
   sys.exit(1)
+
+gettext.bindtextdomain(APP, DIR)
+gettext.textdomain(APP)
+gtk.glade.bindtextdomain(APP, DIR)
+gtk.glade.textdomain(APP)
 
 
 class FileSplitterException(Exception):
