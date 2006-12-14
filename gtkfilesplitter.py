@@ -18,7 +18,7 @@ import locale, gettext
 APP = 'filesplitter'
 DIR = 'locale'
 
-locale.setlocale(locale.LC_ALL, '')
+#locale.setlocale(locale.LC_ALL, '')
 gettext.bindtextdomain(APP, DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
@@ -285,7 +285,7 @@ class FileSplitter:
       print "joining part", f
       part = open(f, "rb")
       reading = True
-      # while len(data = part.read(4096)) > 0:
+
       while reading:
 
         # check if join files is cancelled
@@ -352,7 +352,7 @@ class GtkFileSplitter:
     
     #Set the Glade file
     self.gladefile = "gtkfilesplitter.glade"  
-    self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter") 
+    self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter", APP) 
     
     #Create our dictionay and connect it
     dic = {
@@ -414,7 +414,7 @@ class GtkFileSplitter:
 
       # ChunksizeComboBox check
       self.chunksizeComboBox = self.widget("chunksizeComboBox")
-      self.comboboxMult = (1,1024,1048576)[self.chunksizeComboBox.get_active()]
+      self.comboboxMult = (1,1024,1024*1024)[self.chunksizeComboBox.get_active()]
       print "combobox mult:", self.comboboxMult
 
       # fileToSplitEntry check

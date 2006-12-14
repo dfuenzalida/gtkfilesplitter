@@ -2,12 +2,12 @@
 # Copyright (C) 2006 Denis Fuenzalida
 # This file is distributed under the GPL license
 # Denis Fuenzalida <denis.fuenzalida@gmail.com>, 2006
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: gtkfilesplitter 0.1\n"
-"Report-Msgid-Bugs-To: denis.fuenzalida@gmail.com\n"
-"POT-Creation-Date: 2006-12-07 10:25-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-12-13 22:47-0300\n"
 "PO-Revision-Date: 2006-12-07 10:32-0300\n"
 "Last-Translator: <denis.fuenzalida@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -16,91 +16,179 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gtkfilesplitter.py:97
+#: gtkfilesplitter.py:98
 msgid "Error: filename not given"
 msgstr "Error: Falta el nombre de archivo"
 
-#: gtkfilesplitter.py:135
+#: gtkfilesplitter.py:136
 #, python-format
 msgid "You're about to create %d files. Are you sure?"
 msgstr "Está a punto de crear %d archivos. ¿Está seguro?"
 
-#: gtkfilesplitter.py:205
+#: gtkfilesplitter.py:206
 msgid "Could't remove original file"
 msgstr "No se pudo borrar el archivo original"
 
-#: gtkfilesplitter.py:216
+#: gtkfilesplitter.py:217
 msgid "Could't create md5 hashfile"
 msgstr "No se pudo crear el archivo MD5"
 
-#: gtkfilesplitter.py:321 gtkfilesplitter.py:380
-msgid "Delete orig file: "
-msgstr ""
-
 #: gtkfilesplitter.py:327
-msgid "Do you want to cancel?"
-msgstr "¿Desea cancelar la operación?"
+msgid "Checksum verified OK"
+msgstr "Verificación de archivo correcta"
 
-#: gtkfilesplitter.py:329
-msgid "Action canceled by user"
-msgstr "Acción cancelada por el usuario"
+#: gtkfilesplitter.py:336
+#, fuzzy, python-format
+msgid ""
+"Could't remove file part\n"
+"'%s'"
+msgstr "No se pudo borrar el archivo original"
 
-#: gtkfilesplitter.py:334
-msgid "Select a file to split"
-msgstr "Seleccione el archivo a dividir"
+#: gtkfilesplitter.py:339
+msgid "Checksum couldn't be verified"
+msgstr "No se pudo verificar el archivo"
 
-#: gtkfilesplitter.py:342
-msgid "file selected: "
-msgstr ""
-
-#: gtkfilesplitter.py:347 gtkfilesplitter.py:423
-msgid "no files selected"
-msgstr ""
-
-#: gtkfilesplitter.py:367
-msgid "Please select a file"
-msgstr "Por favor, seleccione un archivo"
-
-#: gtkfilesplitter.py:373 gtkfilesplitter.py:374
-msgid "Couldn't open the file '"
-msgstr "No se pudo abrir el archivo '"
-
-#: gtkfilesplitter.py:373 gtkfilesplitter.py:374
-msgid "'"
-msgstr ""
-
-#: gtkfilesplitter.py:385
-msgid "Generate MD5: "
-msgstr "Generar MD5: "
-
-#: gtkfilesplitter.py:403
+#: gtkfilesplitter.py:344 gtkfilesplitter.py:460
 msgid "Done"
 msgstr "Listo"
 
-#: gtkfilesplitter.py:411
+#: gtkfilesplitter.py:385 gtkfilesplitter.py:511
+msgid "Do you want to cancel?"
+msgstr "¿Desea cancelar la operación?"
+
+#: gtkfilesplitter.py:387 gtkfilesplitter.py:513
+msgid "Action canceled by user"
+msgstr "Acción cancelada por el usuario"
+
+#: gtkfilesplitter.py:391
+msgid "Select a file to split"
+msgstr "Seleccione el archivo a dividir"
+
+#: gtkfilesplitter.py:399
+msgid "file selected: "
+msgstr "Archivo seleccionado:"
+
+#: gtkfilesplitter.py:404 gtkfilesplitter.py:480
+msgid "no files selected"
+msgstr "No se seleccionaron archivos"
+
+#: gtkfilesplitter.py:424 gtkfilesplitter.py:490
+msgid "Please select a file"
+msgstr "Por favor, seleccione un archivo"
+
+#: gtkfilesplitter.py:430 gtkfilesplitter.py:431
+msgid "Couldn't open the file '"
+msgstr "No se pudo abrir el archivo '"
+
+#: gtkfilesplitter.py:430 gtkfilesplitter.py:431
+msgid "'"
+msgstr "'"
+
+#: gtkfilesplitter.py:437
+msgid "Delete orig file: "
+msgstr "Borrar archivo original"
+
+#: gtkfilesplitter.py:442
+msgid "Generate MD5: "
+msgstr "Generar MD5: "
+
+#: gtkfilesplitter.py:468
 msgid "Select the first file to join"
 msgstr "Seleccione el primer archivo a unir"
 
-#: gtkfilesplitter.py:458
+#: gtkfilesplitter.py:496
+#, fuzzy, python-format
+msgid "Couldn't open the file '%s'"
+msgstr "No se pudo abrir el archivo '"
+
+#: gtkfilesplitter.py:516
+msgid ""
+"Simple File Splitter/Joiner version 0.1\n"
+"by Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
+"\n"
+"http://code.google.com/p/gtkfilesplitter"
+msgstr ""
+
+#: gtkfilesplitter.py:551
 #, python-format
 msgid "Working ... %d%c done"
 msgstr "Trabajando ... %d%c listo"
 
-#: gtkfilesplitter.py:474
+#: gtkfilesplitter.py:567
 msgid "Information"
 msgstr "Información"
 
-#: gtkfilesplitter.py:481
+#: gtkfilesplitter.py:574
 msgid "Alert"
 msgstr "Alerta"
 
-#: gtkfilesplitter.py:488
+#: gtkfilesplitter.py:581
 msgid "Error"
 msgstr "Error"
 
-#: gtkfilesplitter.py:495
+#: gtkfilesplitter.py:588
 msgid "Please confirm"
 msgstr "Por favor, confirme"
 
+#: gtkfilesplitter.glade.h:1
+msgid "Bytes"
+msgstr ""
+
+#: gtkfilesplitter.glade.h:6
+msgid "Delete file parts on sucess"
+msgstr "Borrar trozos si sale todo bien"
+
+#: gtkfilesplitter.glade.h:7
+#, fuzzy
+msgid "Delete original file?"
+msgstr "No se pudo borrar el archivo original"
+
+#: gtkfilesplitter.glade.h:8
+msgid "File Splitter/Joiner 0.1"
+msgstr "Separador/Unidor de Archivos 0.1"
+
+#: gtkfilesplitter.glade.h:9
+msgid "File to join  (<file>.1): "
+msgstr "Archivo a unir (<archivo>.1): "
+
+#: gtkfilesplitter.glade.h:10
 msgid "File to split: "
 msgstr "Archivo a dividir: "
+
+#: gtkfilesplitter.glade.h:11
+#, fuzzy
+msgid "Generate MD5 checksum file?"
+msgstr "Generar MD5: "
+
+#: gtkfilesplitter.glade.h:12
+msgid "Parts size:"
+msgstr "Tamaño de las partes:"
+
+#: gtkfilesplitter.glade.h:13
+msgid "Verify MD5 checksum file"
+msgstr "Verificar con archivo MD5"
+
+#: gtkfilesplitter.glade.h:14
+msgid "_About"
+msgstr "A_cerca de"
+
+#: gtkfilesplitter.glade.h:15
+msgid "_File"
+msgstr "_Archivo"
+
+#: gtkfilesplitter.glade.h:16
+msgid "_Help"
+msgstr "A_yuda"
+
+#: gtkfilesplitter.glade.h:17
+msgid "_Join file parts"
+msgstr "_Unir partes de archivo"
+
+#: gtkfilesplitter.glade.h:18
+msgid "_Quit"
+msgstr "_Salir"
+
+#: gtkfilesplitter.glade.h:19
+#, fuzzy
+msgid "_Split file into parts"
+msgstr "Seleccione el archivo a dividir"
