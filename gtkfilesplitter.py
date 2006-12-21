@@ -2,7 +2,9 @@
 # $Id$
 #
 # GtkFileSplitter - A simple graphical interface to a split/contact module
-# Author: Denis Fuenzalida, based on code by Anand Pillai
+# Author: Denis Fuenzalida <denis.fuenzalida@gmail.com>, 
+# based on code by Anand Pillai, see
+# http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/224800
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,7 +24,7 @@ import os
 import sys
 import md5
 
-# Version con soporte para i10n :-)
+# for i10n support see
 # http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq22.002.htp
 
 import locale, gettext

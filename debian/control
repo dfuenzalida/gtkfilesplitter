@@ -1,0 +1,14 @@
+Source: gtkfilesplitter
+Section: admin
+Priority: optional
+Maintainer: Denis Fuenzalida <denis.fuenzalida@gmail.com>
+Build-Depends: debhelper (>= 5), python-support (>= 0.3)
+Standards-Version: 3.7.2.2
+
+Package: gtkfilesplitter
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python:Depends}, python, python-glade2, python-gtk2
+Description: Simple file splitter/joiner with checksum support
+ A desktop application to split and join files
+ .
+ For more information, visit http://code.google.com/p/gtkfilesplitter
