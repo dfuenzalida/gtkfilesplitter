@@ -1,7 +1,5 @@
 # PO = ca de es fr hr it pl pt pt_BR ro sv zh_CN
 
-DESTDIR = ./tmp
-APPNAME = gtkfilesplitter
 PO = es
 
 PREFIX ?= /usr
@@ -38,19 +36,12 @@ install: make-install-dirs install-po
 	install -m 644 *.py $(DESTDIR)$(PREFIX)/share/gtkfilesplitter
 
 	install -m 755 gtkfilesplitter.py $(DESTDIR)$(PREFIX)/share/gtkfilesplitter
-
 	install -m 644 gtkfilesplitter.glade $(DESTDIR)$(PREFIX)/share/gtkfilesplitter
 	install -m 644 gtkfilesplitter*.png $(DESTDIR)$(PREFIX)/share/gtkfilesplitter
 	install -m 644 gtkfilesplitter.desktop $(DESTDIR)$(PREFIX)/share/applications/
 
-	# sed 's/aptoncd.glade/\/usr\/share\/aptoncd\/aptoncd.glade/' $(DESTDIR)$(PREFIX)/share/aptoncd/config.py > $(DESTDIR)$(PREFIX)/share/aptoncd/config
-	# sed 's/content.xml/\/usr\/share\/aptoncd\/content.xml/' $(DESTDIR)$(PREFIX)/share/aptoncd/config > $(DESTDIR)$(PREFIX)/share/aptoncd/config.py
-	# sed 's/locale/\/usr\/share\/locale/' $(DESTDIR)$(PREFIX)/share/aptoncd/config.py > $(DESTDIR)$(PREFIX)/share/aptoncd/config
-	# sed 's/doc\/C\/index.xml/\/usr\/share\/gnome\/help\/aptoncd\/C\/index.xml/' $(DESTDIR)$(PREFIX)/share/aptoncd/config > $(DESTDIR)$(PREFIX)/share/aptoncd/config.py
-	# rm $(DESTDIR)$(PREFIX)/share/aptoncd/config 
-
 	cd $(DESTDIR)$(PREFIX)/bin && \
-	ln -sf ../share/aptoncd/gtkfilesplitter.py gtkfilesplitter && \
+	ln -sf ../share/gtkfilesplitter/gtkfilesplitter.py gtkfilesplitter && \
 	chmod 755 gtkfilesplitter
 		
 install-po:
