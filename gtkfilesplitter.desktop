@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Name=GtkFileSplitter
+GenericName=File Splitter and Joiner
+GenericName[es]=Trozar y Unir Archivos
+Comment=Simple File Splitter and Joiner for the desktop
+Comment[es]=Aplicación sencilla para trozar y unir archivos
+Encoding=UTF-8
+TryExec=gtkfilesplitter
+Exec=gtkfilesplitter
+Icon=/usr/share/gtkfilesplitter/gtkfilesplitter.png
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Application;Utility;
+

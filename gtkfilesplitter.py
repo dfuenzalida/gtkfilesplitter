@@ -29,8 +29,8 @@ import md5
 
 import locale, gettext
 
-APP = 'filesplitter'
-DIR = 'locale'
+APP = 'gtkfilesplitter'
+DIR = '/'
 
 _ = gettext.gettext
 

@@ -1,3 +1,11 @@
+gtkfilesplitter (0.1.2-0ubuntu2) feisty; urgency=low
+
+  * Small fixes:
+    * DEB package cleaner
+    * Small fixes on main program and 'es' locale
+
+ -- Denis Fuenzalida <denis@ubuntutop>  Mon,  4 Jun 2007 23:46:41 -0400
+
 gtkfilesplitter (0.1-0ubuntu1) edgy; urgency=low
 
   * Initial release
