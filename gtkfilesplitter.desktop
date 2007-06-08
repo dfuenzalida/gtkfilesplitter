@@ -12,5 +12,7 @@ Icon=/usr/share/gtkfilesplitter/gtkfilesplitter.png
 Terminal=false
 StartupNotify=true
 Type=Application
-Categories=Application;Utility;
+Categories=Utility;
+
+
 

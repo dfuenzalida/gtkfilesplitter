@@ -30,7 +30,7 @@ import md5
 import locale, gettext
 
 APP = 'gtkfilesplitter'
-DIR = '/'
+DIR = '/usr/share/locale'
 
 _ = gettext.gettext
 
@@ -367,8 +367,14 @@ class GtkFileSplitter:
   def __init__(self):
     
     #Set the Glade file
-    self.gladefile = "gtkfilesplitter.glade"  
-    self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter", APP) 
+    try:
+      self.gladefile = "gtkfilesplitter.glade"  
+      self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter", APP) 
+    except:
+      print "glade file not found in current dir, trying installed glade file."
+      self.gladefile = "/usr/share/gtkfilesplitter/gtkfilesplitter.glade"  
+      self.wTree = gtk.glade.XML(self.gladefile, "GtkFileSplitter", APP) 
+
     
     #Create our dictionay and connect it
     dic = {
