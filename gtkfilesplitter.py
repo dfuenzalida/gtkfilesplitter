@@ -347,9 +347,13 @@ class FileSplitter:
           import os
 	  for f in chunkfiles:
             try:
-              os.remove(f)
+              os.remove(destdir + os.path.sep + f)
             except:
               display.alert(_("Could't remove file part\n'%s'") % f)
+          try:
+            os.remove(self.__filename + ".md5")
+          except:
+            display.alert(_("Could't remove checksum file"))
 
       else:
         display.alert(_("Checksum couldn't be verified"))
