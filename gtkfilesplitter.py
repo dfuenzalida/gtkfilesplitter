@@ -290,7 +290,7 @@ class FileSplitter:
     chunkfiles.sort(self.sort_index)
 
     data=''
-    original = open(bname, "wb")
+    original = open(destdir + os.path.sep + bname, "wb")
     i = 0
     self.__hash = md5.new()
 
@@ -298,8 +298,8 @@ class FileSplitter:
 
       # open part, read chunks up to 4k, write to original file
       i = i + 1
-      print "joining part", f
-      part = open(f, "rb")
+      print "joining part", (destdir + os.path.sep + f)
+      part = open(destdir + os.path.sep + f, "rb")
       reading = True
 
       while reading:
