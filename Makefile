@@ -1,6 +1,6 @@
 # PO = ca de es fr hr it pl pt pt_BR ro sv zh_CN
 
-PO = es
+PO = es pl 
 
 PREFIX ?= /usr
 

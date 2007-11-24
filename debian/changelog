@@ -1,3 +1,9 @@
+gtkfilesplitter (0.1.3-0ubuntu1) gutsy; urgency=low
+
+  * Added Polish translation by Tadeusz Hessel
+
+ -- Denis Fuenzalida <denis@deimos>  Fri, 23 Nov 2007 23:22:09 -0300
+
 gtkfilesplitter (0.1.2-0ubuntu2) feisty; urgency=low
 
   * Small fixes:
