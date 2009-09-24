@@ -188,4 +188,4 @@ msgstr "_Salir"
 
 #: gtkfilesplitter.glade.h:19
 msgid "_Split file into parts"
-msgstr "Seleccione el archivo a dividir"
+msgstr "_Dividir un archivo en trozos"
