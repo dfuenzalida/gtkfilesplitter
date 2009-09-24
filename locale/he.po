@@ -1,0 +1,198 @@
+# Hebrew translation for gtkfilesplitter
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the gtkfilesplitter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gtkfilesplitter\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2006-12-13 22:47-0300\n"
+"PO-Revision-Date: 2008-12-01 10:13+0000\n"
+"Last-Translator: Yaron <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-09-24 00:44+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: gtkfilesplitter.py:98
+msgid "Error: filename not given"
+msgstr "שגיאה: לא ניתן שם קובץ"
+
+#: gtkfilesplitter.py:136
+#, python-format
+msgid "You're about to create %d files. Are you sure?"
+msgstr "אתה עומד ליצור%d קבצים. האם אתה בטוח?"
+
+#: gtkfilesplitter.py:206
+msgid "Could't remove original file"
+msgstr "לא ניתן להסיר את הקובץ המקורי"
+
+#: gtkfilesplitter.py:217
+msgid "Could't create md5 hashfile"
+msgstr "לא ניתן ליצור קובץ גיבוב md5"
+
+#: gtkfilesplitter.py:327
+msgid "Checksum verified OK"
+msgstr "מחרוזת האימות אומתה בהצלחה"
+
+#: gtkfilesplitter.py:336
+#, python-format
+msgid ""
+"Could't remove file part\n"
+"'%s'"
+msgstr ""
+"לא ניתן להסיר את חלק הקובץ\n"
+"'%s'"
+
+#: gtkfilesplitter.py:339
+msgid "Checksum couldn't be verified"
+msgstr "לא ניתן לאמת את מחרוזת האימות"
+
+#: gtkfilesplitter.py:344 gtkfilesplitter.py:460
+msgid "Done"
+msgstr "בוצע"
+
+#: gtkfilesplitter.py:385 gtkfilesplitter.py:511
+msgid "Do you want to cancel?"
+msgstr "האם ברצונך לבטל?"
+
+#: gtkfilesplitter.py:387 gtkfilesplitter.py:513
+msgid "Action canceled by user"
+msgstr "הפעולה בוטלה על ידי המשתמש"
+
+#: gtkfilesplitter.py:391
+msgid "Select a file to split"
+msgstr "בחר קובץ לפיצול"
+
+#: gtkfilesplitter.py:399
+msgid "file selected: "
+msgstr "הקובץ שנבחר: "
+
+#: gtkfilesplitter.py:404 gtkfilesplitter.py:480
+msgid "no files selected"
+msgstr "לא נבחרו קבצים"
+
+#: gtkfilesplitter.py:424 gtkfilesplitter.py:490
+msgid "Please select a file"
+msgstr "אנא בחר קובץ"
+
+#: gtkfilesplitter.py:430 gtkfilesplitter.py:431
+msgid "Couldn't open the file '"
+msgstr "לא ניתן לפתוח את הקובץ '"
+
+#: gtkfilesplitter.py:430 gtkfilesplitter.py:431
+msgid "'"
+msgstr "'"
+
+#: gtkfilesplitter.py:437
+msgid "Delete orig file: "
+msgstr "מחק את הקובץ המקורי: "
+
+#: gtkfilesplitter.py:442
+msgid "Generate MD5: "
+msgstr "ייצר MD5: "
+
+#: gtkfilesplitter.py:468
+msgid "Select the first file to join"
+msgstr "בחר את הקובץ הראשון לאיחוד"
+
+#: gtkfilesplitter.py:496
+#, python-format
+msgid "Couldn't open the file '%s'"
+msgstr "לא ניתן לפתוח את הקובץ '%s'"
+
+#: gtkfilesplitter.py:516
+msgid ""
+"Simple File Splitter/Joiner version 0.1\n"
+"by Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
+"\n"
+"http://code.google.com/p/gtkfilesplitter"
+msgstr ""
+"מפצל/מאחד קבצים פשוט גירסה 0.1\n"
+"על ידי Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
+"\n"
+"http://code.google.com/p/gtkfilesplitter"
+
+#: gtkfilesplitter.py:551
+#, python-format
+msgid "Working ... %d%c done"
+msgstr "עובד ... הושלמו %d%c"
+
+#: gtkfilesplitter.py:567
+msgid "Information"
+msgstr "מידע"
+
+#: gtkfilesplitter.py:574
+msgid "Alert"
+msgstr "התרעה"
+
+#: gtkfilesplitter.py:581
+msgid "Error"
+msgstr "שגיאה"
+
+#: gtkfilesplitter.py:588
+msgid "Please confirm"
+msgstr "אנא אשר"
+
+#: gtkfilesplitter.glade.h:1
+msgid "Bytes"
+msgstr "בתים"
+
+#: gtkfilesplitter.glade.h:6
+msgid "Delete file parts on sucess"
+msgstr "מחק את חלקי הקובץ לאחר הצלחה"
+
+#: gtkfilesplitter.glade.h:7
+msgid "Delete original file?"
+msgstr "למחוק את הקובץ המקורי?"
+
+#: gtkfilesplitter.glade.h:8
+msgid "File Splitter/Joiner 0.1"
+msgstr "מפצל/מאחד קבצים 0.1"
+
+#: gtkfilesplitter.glade.h:9
+msgid "File to join  (<file>.1): "
+msgstr "קובץ לאיחוד (<קובץ>.1): "
+
+#: gtkfilesplitter.glade.h:10
+msgid "File to split: "
+msgstr "קובץ לפיצול: "
+
+#: gtkfilesplitter.glade.h:11
+msgid "Generate MD5 checksum file?"
+msgstr "לייצר קובץ מחרוזת אימות MD5?"
+
+#: gtkfilesplitter.glade.h:12
+msgid "Parts size:"
+msgstr "גודל החלקים:"
+
+#: gtkfilesplitter.glade.h:13
+msgid "Verify MD5 checksum file"
+msgstr "אימות קובץ מחרוזת אימות ה־MD5"
+
+#: gtkfilesplitter.glade.h:14
+msgid "_About"
+msgstr "_אודות"
+
+#: gtkfilesplitter.glade.h:15
+msgid "_File"
+msgstr "_קובץ"
+
+#: gtkfilesplitter.glade.h:16
+msgid "_Help"
+msgstr "ע_זרה"
+
+#: gtkfilesplitter.glade.h:17
+msgid "_Join file parts"
+msgstr "א_יחוד חלקי קובץ"
+
+#: gtkfilesplitter.glade.h:18
+msgid "_Quit"
+msgstr "י_ציאה"
+
+#: gtkfilesplitter.glade.h:19
+msgid "_Split file into parts"
+msgstr "_פצל קובץ לחלקים"

@@ -1,84 +1,87 @@
-# Messages Translation File for GtkFileSplitter
-# Copyright (C) 2006 Denis Fuenzalida
-# This file is distributed under the GPL license
-# Denis Fuenzalida <denis.fuenzalida@gmail.com>, 2006
-# 
+# Czech translation for gtkfilesplitter
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the gtkfilesplitter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: gtkfilesplitter 0.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: gtkfilesplitter\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2006-12-13 22:47-0300\n"
-"PO-Revision-Date: 2006-12-07 10:32-0300\n"
-"Last-Translator: <denis.fuenzalida@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2008-12-11 16:55+0000\n"
+"Last-Translator: Vojtěch Trefný <vojtech.trefny@gmail.com>\n"
+"Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CP1252\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Launchpad-Export-Date: 2009-09-24 00:44+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: gtkfilesplitter.py:98
 msgid "Error: filename not given"
-msgstr "Error: Falta el nombre de archivo"
+msgstr "Chyba: nebylo zvoleno jméno souboru"
 
 #: gtkfilesplitter.py:136
 #, python-format
 msgid "You're about to create %d files. Are you sure?"
-msgstr "Est� a punto de crear %d archivos. �Est� seguro?"
+msgstr "Chystíte se vytvořit %d souborů. Jste si jisti?"
 
 #: gtkfilesplitter.py:206
 msgid "Could't remove original file"
-msgstr "No se pudo borrar el archivo original"
+msgstr "Nelze odstranit původní soubor"
 
 #: gtkfilesplitter.py:217
 msgid "Could't create md5 hashfile"
-msgstr "No se pudo crear el archivo MD5"
+msgstr "Nelze vytvořit md5 soubor"
 
 #: gtkfilesplitter.py:327
 msgid "Checksum verified OK"
-msgstr "Verificaci�n de archivo correcta"
+msgstr "Kontrolní součet ověřen"
 
 #: gtkfilesplitter.py:336
 #, python-format
 msgid ""
 "Could't remove file part\n"
 "'%s'"
-msgstr "No se pudo borrar el archivo original"
+msgstr ""
+"Nelze odstranit část souboru\n"
+"'%s'"
 
 #: gtkfilesplitter.py:339
 msgid "Checksum couldn't be verified"
-msgstr "No se pudo verificar el archivo"
+msgstr "Kontrolní součet nelze ověřit"
 
 #: gtkfilesplitter.py:344 gtkfilesplitter.py:460
 msgid "Done"
-msgstr "Listo"
+msgstr "Hotovo"
 
 #: gtkfilesplitter.py:385 gtkfilesplitter.py:511
 msgid "Do you want to cancel?"
-msgstr "�Desea cancelar la operaci�n?"
+msgstr "Přejete si skončit?"
 
 #: gtkfilesplitter.py:387 gtkfilesplitter.py:513
 msgid "Action canceled by user"
-msgstr "Acci�n cancelada por el usuario"
+msgstr "Operace přerušena uživatelem"
 
 #: gtkfilesplitter.py:391
 msgid "Select a file to split"
-msgstr "Seleccione el archivo a dividir"
+msgstr "Vyberte soubor pro rozdělení"
 
 #: gtkfilesplitter.py:399
 msgid "file selected: "
-msgstr "Archivo seleccionado:"
+msgstr "vybraný soubor: "
 
 #: gtkfilesplitter.py:404 gtkfilesplitter.py:480
 msgid "no files selected"
-msgstr "No se seleccionaron archivos"
+msgstr "nebyly vybrány žádné soubory"
 
 #: gtkfilesplitter.py:424 gtkfilesplitter.py:490
 msgid "Please select a file"
-msgstr "Por favor, seleccione un archivo"
+msgstr "Prosím vyberte soubor"
 
 #: gtkfilesplitter.py:430 gtkfilesplitter.py:431
 msgid "Couldn't open the file '"
-msgstr "No se pudo abrir el archivo '"
+msgstr "Nelze otevřít soubor '"
 
 #: gtkfilesplitter.py:430 gtkfilesplitter.py:431
 msgid "'"
@@ -86,20 +89,20 @@ msgstr "'"
 
 #: gtkfilesplitter.py:437
 msgid "Delete orig file: "
-msgstr "Borrar archivo original"
+msgstr "Smazat původní soubor: "
 
 #: gtkfilesplitter.py:442
 msgid "Generate MD5: "
-msgstr "Generar MD5: "
+msgstr "Vytvořit MD5: "
 
 #: gtkfilesplitter.py:468
 msgid "Select the first file to join"
-msgstr "Seleccione el primer archivo a unir"
+msgstr "Vyberte první soubor ke spojení"
 
 #: gtkfilesplitter.py:496
 #, python-format
 msgid "Couldn't open the file '%s'"
-msgstr "No se pudo abrir el archivo '"
+msgstr "Nelze otevřít soubor '%s'"
 
 #: gtkfilesplitter.py:516
 msgid ""
@@ -108,84 +111,88 @@ msgid ""
 "\n"
 "http://code.google.com/p/gtkfilesplitter"
 msgstr ""
+"Simple File Splitter/Joiner version 0.1\n"
+"autor Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
+"\n"
+"http://code.google.com/p/gtkfilesplitter"
 
 #: gtkfilesplitter.py:551
 #, python-format
 msgid "Working ... %d%c done"
-msgstr "Trabajando ... %d%c listo"
+msgstr "Pracuji ... %d%c hotovo"
 
 #: gtkfilesplitter.py:567
 msgid "Information"
-msgstr "Informaci�n"
+msgstr "Informace"
 
 #: gtkfilesplitter.py:574
 msgid "Alert"
-msgstr "Alerta"
+msgstr "Upozornění"
 
 #: gtkfilesplitter.py:581
 msgid "Error"
-msgstr "Error"
+msgstr "Chyba"
 
 #: gtkfilesplitter.py:588
 msgid "Please confirm"
-msgstr "Por favor, confirme"
+msgstr "Prosím potvrďte"
 
 #: gtkfilesplitter.glade.h:1
 msgid "Bytes"
-msgstr ""
+msgstr "Bajty:"
 
 #: gtkfilesplitter.glade.h:6
 msgid "Delete file parts on sucess"
-msgstr "Borrar trozos en caso de �xito"
+msgstr "Smazat části souboru po skončení"
 
 #: gtkfilesplitter.glade.h:7
 msgid "Delete original file?"
-msgstr "Borrar el archivo original?"
+msgstr "Smazat původní soubor?"
 
 #: gtkfilesplitter.glade.h:8
 msgid "File Splitter/Joiner 0.1"
-msgstr "Separador/Unidor de Archivos 0.1"
+msgstr "File Splitter/Joiner 0.1"
 
 #: gtkfilesplitter.glade.h:9
 msgid "File to join  (<file>.1): "
-msgstr "Archivo a unir (<archivo>.1): "
+msgstr "Soubor ke spojení (<soubor>.1): "
 
 #: gtkfilesplitter.glade.h:10
 msgid "File to split: "
-msgstr "Archivo a dividir: "
+msgstr "Soubor pro rozdělení "
 
 #: gtkfilesplitter.glade.h:11
 msgid "Generate MD5 checksum file?"
-msgstr "Generar archivo MD5 de verificaci�n? "
+msgstr "Vytvoři kotrolní součet MD5?"
 
 #: gtkfilesplitter.glade.h:12
 msgid "Parts size:"
-msgstr "Tama�o de las partes:"
+msgstr "Velikost částí:"
 
 #: gtkfilesplitter.glade.h:13
 msgid "Verify MD5 checksum file"
-msgstr "Verificar con archivo MD5"
+msgstr "Ověřit kotrolní součet MD5"
 
 #: gtkfilesplitter.glade.h:14
 msgid "_About"
-msgstr "A_cerca de"
+msgstr "_O aplikaci"
 
 #: gtkfilesplitter.glade.h:15
 msgid "_File"
-msgstr "_Archivo"
+msgstr "_Soubor"
 
 #: gtkfilesplitter.glade.h:16
 msgid "_Help"
-msgstr "A_yuda"
+msgstr "_Nápověda"
 
 #: gtkfilesplitter.glade.h:17
 msgid "_Join file parts"
-msgstr "_Unir partes de archivo"
+msgstr "_Spojit části souboru"
 
 #: gtkfilesplitter.glade.h:18
 msgid "_Quit"
-msgstr "_Salir"
+msgstr "U_končit"
 
 #: gtkfilesplitter.glade.h:19
 msgid "_Split file into parts"
-msgstr "_Dividir un archivo en trozos"
+msgstr "_Rozdělit soubor na části"

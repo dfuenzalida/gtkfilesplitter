@@ -1,107 +1,108 @@
-# Messages Translation File for GtkFileSplitter
-# Copyright (C) 2006 Denis Fuenzalida
-# This file is distributed under the GPL license
-# Denis Fuenzalida <denis.fuenzalida@gmail.com>, 2006
-# 
+# Simplified Chinese translation for gtkfilesplitter
+# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
+# This file is distributed under the same license as the gtkfilesplitter package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: gtkfilesplitter 0.1\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: gtkfilesplitter\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2006-12-13 22:47-0300\n"
-"PO-Revision-Date: 2006-12-07 10:32-0300\n"
-"Last-Translator: <denis.fuenzalida@gmail.com>\n"
-"Language-Team: Spanish\n"
+"PO-Revision-Date: 2008-10-10 06:19+0000\n"
+"Last-Translator: Mr.Lodar <Unknown>\n"
+"Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
+"X-Launchpad-Export-Date: 2009-09-24 00:44+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
 #: gtkfilesplitter.py:98
 msgid "Error: filename not given"
-msgstr "Błąd: niepodana nazwa pliku"
+msgstr "错误：未给定文件名"
 
 #: gtkfilesplitter.py:136
 #, python-format
 msgid "You're about to create %d files. Are you sure?"
-msgstr "Chcesz utworzyć plik typu %d. Jesteś pewien?"
+msgstr "您将要创建 %d 文件。确定吗？"
 
 #: gtkfilesplitter.py:206
 msgid "Could't remove original file"
-msgstr "Nie można usunąć pliku zródłowego"
+msgstr "不能移除原始文件"
 
 #: gtkfilesplitter.py:217
 msgid "Could't create md5 hashfile"
-msgstr "Nie można utworzyć md5 hashfile"
+msgstr "不能创建 md5 哈希文件"
 
 #: gtkfilesplitter.py:327
 msgid "Checksum verified OK"
-msgstr "Suma kontrolna sprawdzona OK"
+msgstr "校验和已验证通过"
 
 #: gtkfilesplitter.py:336
 #, python-format
 msgid ""
 "Could't remove file part\n"
 "'%s'"
-msgstr "Nie można usunąć części\n pliku"
+msgstr ""
+"不能移除文件分块\n"
 "'%s'"
 
 #: gtkfilesplitter.py:339
 msgid "Checksum couldn't be verified"
-msgstr "Suma kontrolna nie mogła być sprawdzona"
+msgstr "校验和不能被验证"
 
 #: gtkfilesplitter.py:344 gtkfilesplitter.py:460
 msgid "Done"
-msgstr "Zrobione"
+msgstr "完成"
 
 #: gtkfilesplitter.py:385 gtkfilesplitter.py:511
 msgid "Do you want to cancel?"
-msgstr "Chcesz anulować?"
+msgstr "您要取消吗？"
 
 #: gtkfilesplitter.py:387 gtkfilesplitter.py:513
 msgid "Action canceled by user"
-msgstr "Czynność anulowana przez użytkownika"
+msgstr "动作被用户取消"
 
 #: gtkfilesplitter.py:391
 msgid "Select a file to split"
-msgstr "Wybierz plik do podzielenia"
+msgstr "选择一个要分割的文件"
 
 #: gtkfilesplitter.py:399
 msgid "file selected: "
-msgstr "plik wybrany"
+msgstr "已选择文件： "
 
 #: gtkfilesplitter.py:404 gtkfilesplitter.py:480
 msgid "no files selected"
-msgstr "żadny plik nie został wybrany"
+msgstr "没有选择文件"
 
 #: gtkfilesplitter.py:424 gtkfilesplitter.py:490
 msgid "Please select a file"
-msgstr "Wybierz plik"
+msgstr "请选择一个文件"
 
 #: gtkfilesplitter.py:430 gtkfilesplitter.py:431
 msgid "Couldn't open the file '"
-msgstr "Nie można otworzyć pliku"
+msgstr "不能打开文件 '"
 
 #: gtkfilesplitter.py:430 gtkfilesplitter.py:431
 msgid "'"
-msgstr ""
+msgstr "'"
 
 #: gtkfilesplitter.py:437
 msgid "Delete orig file: "
-msgstr "Skasować oryginalny plik:"
+msgstr "删除原始文件 "
 
 #: gtkfilesplitter.py:442
 msgid "Generate MD5: "
-msgstr "Stwórz MD5"
+msgstr "生成 MD5： "
 
 #: gtkfilesplitter.py:468
 msgid "Select the first file to join"
-msgstr "Wybierz pierwszy plik do połączenia"
+msgstr "选择第一个文件来合并"
 
 #: gtkfilesplitter.py:496
 #, python-format
 msgid "Couldn't open the file '%s'"
-msgstr "Nie udało się otworzyć plik '%s"
+msgstr "不能打开文件 '%s'"
 
 #: gtkfilesplitter.py:516
 msgid ""
@@ -110,43 +111,43 @@ msgid ""
 "\n"
 "http://code.google.com/p/gtkfilesplitter"
 msgstr ""
-"Simple File Splitter/Joiner wersja 0.1\n"
-"twórca: Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
+"Simple File Splitter/Joiner version 0.1\n"
+"by Denis Fuenzalida <denis.fuenzalida@gmail.com>\n"
 "\n"
 "http://code.google.com/p/gtkfilesplitter"
 
 #: gtkfilesplitter.py:551
 #, python-format
 msgid "Working ... %d%c done"
-msgstr "Trwa wykonywanie...%d%c wykonano"
+msgstr "正在工作 ... %d%c 完成"
 
 #: gtkfilesplitter.py:567
 msgid "Information"
-msgstr "Informacja"
+msgstr "信息"
 
 #: gtkfilesplitter.py:574
 msgid "Alert"
-msgstr "Uwaga"
+msgstr "警告"
 
 #: gtkfilesplitter.py:581
 msgid "Error"
-msgstr "Błąd"
+msgstr "错误"
 
 #: gtkfilesplitter.py:588
 msgid "Please confirm"
-msgstr "Proszę potwierdzić"
+msgstr "请确认"
 
 #: gtkfilesplitter.glade.h:1
 msgid "Bytes"
-msgstr "Bity"
+msgstr "字节"
 
 #: gtkfilesplitter.glade.h:6
 msgid "Delete file parts on sucess"
-msgstr "Skasowanie części plików udane"
+msgstr "成功时删除文件分块"
 
 #: gtkfilesplitter.glade.h:7
 msgid "Delete original file?"
-msgstr "Skasować plik zródłowy?"
+msgstr "删除原始文件？"
 
 #: gtkfilesplitter.glade.h:8
 msgid "File Splitter/Joiner 0.1"
@@ -154,45 +155,44 @@ msgstr "File Splitter/Joiner 0.1"
 
 #: gtkfilesplitter.glade.h:9
 msgid "File to join  (<file>.1): "
-msgstr "Plik do połączenia  (<plik>.1):"
+msgstr "合并的文件  (<file>.1): "
 
 #: gtkfilesplitter.glade.h:10
 msgid "File to split: "
-msgstr "Plik do podzielenia"
+msgstr "分割的文件: "
 
 #: gtkfilesplitter.glade.h:11
 msgid "Generate MD5 checksum file?"
-msgstr "Stworzyć sumę kontrolną MD5 pliku?"
+msgstr "生成 MD5 校验和文件？"
 
 #: gtkfilesplitter.glade.h:12
 msgid "Parts size:"
-msgstr "Rozmiary części:"
+msgstr "分块大小："
 
 #: gtkfilesplitter.glade.h:13
 msgid "Verify MD5 checksum file"
-msgstr "Sprawdz sumę kontrolną MD5 pliku"
+msgstr "验证 MD5 校验和文件"
 
 #: gtkfilesplitter.glade.h:14
 msgid "_About"
-msgstr "_O programie"
+msgstr "关于(_A)"
 
 #: gtkfilesplitter.glade.h:15
 msgid "_File"
-msgstr "_Plik"
+msgstr "文件(_F)"
 
 #: gtkfilesplitter.glade.h:16
 msgid "_Help"
-msgstr "_Pomoc"
+msgstr "帮助(_H)"
 
 #: gtkfilesplitter.glade.h:17
 msgid "_Join file parts"
-msgstr "_Połącz części plików"
+msgstr "合并文件分块(_J)"
 
 #: gtkfilesplitter.glade.h:18
 msgid "_Quit"
-msgstr "_Zamknij"
+msgstr "退出(_Q)"
 
 #: gtkfilesplitter.glade.h:19
 msgid "_Split file into parts"
-msgstr "_Podziel plik na części"
-
+msgstr "分割文件到分块(_S)"

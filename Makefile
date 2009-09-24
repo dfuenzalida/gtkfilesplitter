@@ -1,6 +1,7 @@
 # PO = ca de es fr hr it pl pt pt_BR ro sv zh_CN
 
-PO = es pl 
+# 20090923 - Added translations from Launchpad
+PO = cs es fr he it nl pl sv zh_CN
 
 PREFIX ?= /usr
 
@@ -15,10 +16,15 @@ check:
 
 clean:
 	find . -type f -iregex '.*~$$'  -print | xargs rm -rf
-	find . -type d -iregex '.*\.svn$$'  -print | xargs rm -rf
+
+	# 20090923 Don't remove SVN dirs
+	# find . -type d -iregex '.*\.svn$$'  -print | xargs rm -rf
 	find . -type f -iregex '.*\.pyc$$'  -print | xargs rm -rf
 	find . -type f -iregex '.*\.gladep$$'  -print | xargs rm -rf
 	find . -type f -iregex '.*\.bak$$'  -print | xargs rm -rf
+
+	# 20090923 Remove MO dirs
+	for lang in $(PO); do rm -rf locale/$$lang/ ;done
 
 make-install-dirs: make-install-dirs-po
 
