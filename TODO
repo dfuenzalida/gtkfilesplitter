@@ -1,1 +1,5 @@
+sáb sep 26 10:31:08 CLT 2009
+
+* Improve GUI (move checkboxes to the left)
+* Change GUI panels (use Gtk Notebook)
 
